@@ -9,9 +9,9 @@ toggleButton.addEventListener('click', () => {
     config.currentTheme = config.currentTheme === 'light' ? 'dark' : 'light';
     
     if (config.currentTheme === 'dark') {
-        toggleIcon.src = 'light-mode.png';  
+        toggleIcon.src = '../assets/light-mode.png';  
     } else {
-        toggleIcon.src = 'dark mode.png'; 
+        toggleIcon.src = '../assets/dark mode.png'; 
     }
 
     drawBinaryTree(root, canvas);
