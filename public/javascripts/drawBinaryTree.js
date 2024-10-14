@@ -9,11 +9,11 @@ toggleButton.addEventListener('click', () => {
     config.currentTheme = config.currentTheme === 'light' ? 'dark' : 'light';
     
     if (config.currentTheme === 'dark') {
-        toggleIcon.src = '../assets/light-mode.png';
+        toggleIcon.src = '../../public/assets/light-mode.png';
         document.body.classList.remove('light-mode');
         document.body.classList.add('dark-mode');  
     } else {
-        toggleIcon.src = '../assets/dark mode.png'; 
+        toggleIcon.src = '../../public/assets/dark mode.png'; 
         document.body.classList.remove('dark-mode');
         document.body.classList.add('light-mode');
     }
