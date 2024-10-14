@@ -7,7 +7,6 @@ export class BinaryTreeNode {
         this.left = null;
         this.right = null;
     }
-
     setLeft(node) {
         this.left = node;
     }
