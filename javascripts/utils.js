@@ -1,3 +1,5 @@
+import { BinaryTreeNode } from "./BinaryTreeNode.js";
+
 export const config = {
     radius: 20,
     nodeWidth: 50,
@@ -75,5 +77,49 @@ export function connectEdges(canvasElement, xCoord, yCoord) {
     ctx.moveTo(start.x, start.y);
     ctx.bezierCurveTo(cPoint1.x, cPoint1.y, cPoint2.x, cPoint2.y, end.x, end.y);
     ctx.stroke();
+}
 
+export function treeConstructor(input) {
+    input = parseInput(input);
+    const queue = [];
+
+    let idx = 0;
+    const root = new BinaryTreeNode(input[idx]);
+    idx++;
+    queue.push(root);
+    while(queue.length>0 && idx < input.length ) {
+        const node = queue.shift();
+        if (idx < input.length) {
+            if(input[idx]!==null) {
+                const leftNode = new BinaryTreeNode(input[idx]);
+                node.setLeft(leftNode);
+                queue.push(leftNode)
+            }
+            idx++;
+        }
+        if (idx < input.length) {
+            if(input[idx]!==null) {
+                const rightNode = new BinaryTreeNode(input[idx]);
+                node.setRight(rightNode);
+                queue.push(rightNode)
+            }
+            idx++;
+        }
+    }
+    return root;
+}
+function parseInput(input) {
+    let parsedInput = "";
+
+    for(let i = 0; i<input.length; i++) {
+        const ch = input.charAt(i);
+        if(ch!==' ' ) {
+            parsedInput += ch;
+        }
+    }
+    return parsedInput.split(',')
+    .map( elem => {
+        if(elem === 'null') return null;
+        else return elem;
+    })
 }
