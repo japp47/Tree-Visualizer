@@ -59,7 +59,13 @@ export function connectEdges(canvasElement, xCoord, yCoord) {
     const {xStart, xEnd} = xCoord;
     const {yStart, yEnd} = yCoord;
 
+    const xHalf = (xStart+xEnd)/2;
+    const yHalf = (yStart + yEnd)/2;
+
     const start = {x: xStart, y: yStart}
+    //beizure curve
+    const cPoint1 = {x: xHalf, y: yHalf};
+    const cPoint2 = {x: xEnd, y: yHalf};
     const end = {x: xEnd, y: yEnd}
 
     const { nodeFillColor, nodeBorderColor } = config.themes[config.currentTheme];
@@ -67,7 +73,7 @@ export function connectEdges(canvasElement, xCoord, yCoord) {
     ctx.beginPath();
     ctx.strokeStyle = config.currentTheme === 'light' ? nodeBorderColor : nodeFillColor;
     ctx.moveTo(start.x, start.y);
-    ctx.lineTo(end.x, end.y);
+    ctx.bezierCurveTo(cPoint1.x, cPoint1.y, cPoint2.x, cPoint2.y, end.x, end.y);
     ctx.stroke();
 
 }
